@@ -1,0 +1,18 @@
+catkin工作空间
+  创建工作空间和初始化项目
+  1.创建工作空间
+    mkdir -p catkin_ws/src
+    cd ..
+    catkin_make
+  2.创建pkg，安装依赖（根据CMakelist.txt)  
+    catkin_create_pkg test1 [依赖1] [依赖2]
+    
+    部署网上项目
+     先将项目拷贝进catkin_ws/src，然后再进入工作空间安装依赖
+     cd ~/catkin_ws
+     rosdep install --from-paths src --ignore-src --rosdistro=kinetic -y
+  3.编译，source刷新
+    catkin_make
+    source ~/catkin_ws/devel/setup.bash（麻烦）
+    将命令安装到.bashrc中
+    echo "source ~/catkin_ws/devel/setup.bash ">> ~/.bashrc
