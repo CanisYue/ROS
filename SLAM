@@ -1,3 +1,30 @@
-Gmapping
+Map
+Topic:/map
+Type:nav_msgs/OccupancyGrid (栅格地图）
 
-Karto
+Gmapping Topic
+  输入
+    /tf和/tf_static
+      需要有base和odom之间的tf
+      (tf/tfMessage)
+      (tf2_msgs/TFMessage)
+    /scan
+      
+  输出
+    /tf
+      map到odom之间的tf
+    /map
+      (nav_msgs/OccupancyGrid)
+    /map_metadata
+      (nav_msgs/MapMetaData)
+    /slam_gmapping/entropy 精度
+    
+    Gmapping Service
+    Service:/dynamic map
+    Type:nav_msgs/GetMap
+    #Get the map as a nav_msgs/OccupancyGrid
+    ---
+    nav_msgs/OccupancyGrid map
+    
+ Karto
+    
