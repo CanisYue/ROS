@@ -1,0 +1,42 @@
+TransForm
+坐标变换（位置+姿态）
+  tf-维护坐标系的工具，坐标转换的标准（tftree）、话题（、tf）、工具、接口（roscpp、rospy）
+  机器人部件（link）绑定坐标系（frame），由TF树来维护关系
+  两个frame之间需要node（broadcaster）发布消息
+  
+broadcaster发布数据格式： TransformStamped.msg
+
+tf树的数据结构
+  tf/tfMessage.msg (第一代)
+  tf2_msgs/TFMessage.msg （第二代,简化升级版本）
+  
+  
+tf in C++
+  带时间戳的变换
+    tf::StampedTransform
+    
+  tf::TransformBroadcaster类
+  tf::TransformListener类
+    void lookupTransform(const std::string&target_frame, const std::string &source_frame,
+          const ros::Time &time, StampedTransform &transform) 
+    
+    bool canTransform()
+    bool waitForTransform() 
+    
+tf in python
+    tf.transformations (包含基本数学运算函数）
+    
+    tf.TransformListener类
+      canTransform(self, target_frame, source_frame, time)
+    
+    tf.TransformBroadcaster类
+      sendTransform(translation, rotation, time, child, parent)
+      sendTransformMessage(transform)
+      
+ tf工具
+    根据当前tf树创建pdf图
+      $rosrun tf view_frames
+    查看当前的tf树
+      $rosrun rqt_tf_tree rqt_tf_tree 动态
+    查看两个frame之间的变换关系
+      $rosrun tf tf_echo [reference_frame][target_frame]
