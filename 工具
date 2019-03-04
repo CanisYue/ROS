@@ -1,0 +1,16 @@
+仿真工具
+  Gazebo
+ 
+可视化工具
+  Rviz
+  rqt（高级信息）
+    rqt_graph (运算信息)
+    rqt_plot速度信息
+ 
+ 数据记录和回放
+  rosbag
+    记录
+    rosbag record <topic-names>
+    rosbag record -a
+    回放
+    rosbag play <bag-files>
