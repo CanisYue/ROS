@@ -1,0 +1,28 @@
+Client Library提供ROS编程的接口和库
+  roscpp接口
+  ros::init() 初始化
+  
+  ros::NodeHandle Class 创建句柄
+  使用
+  创建subscriber
+    ros::NodeHandle ng;
+    ros::Publisher pwb = nb.advertise(topic, queue_size)
+    pwb.publish(msg);
+  创建subscriber
+    ros::Subscriber subcribe(topic, queue_size, 回调函数指针)
+    
+  ros::master Namespace（理解成抽象类）
+  常用函数
+  bool check(); 检查master是否启动
+  
+
+param获取参数方法
+1.ros::param::get("param1, parameter1);
+2.nh.getParam("param2", parameter2);
+3.nh.param("param3", parameter3, 123);
+
+设置参数
+ros::param::set("param4", parameter4);
+nh.setParam("param5", parameter5);
+
+也可以在launch中设置param
