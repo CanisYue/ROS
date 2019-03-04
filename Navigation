@@ -1,0 +1,44 @@
+Navigation Stack
+move_base
+  功能：
+    全局规划、局部规划（动态避障）、处理异常行为
+  三个接口：
+    Base Local Planner:
+    
+    Base Global Planner:
+    
+    Recovery Behavior：
+  
+  costmap：插件，维护代价地图
+    两张（global， local）、多层（static layer， obstacle layer（动态，支持3D点云投影）， inflation layer（膨胀））
+    
+  MapServer：提供地图 + AMCL（定位）
+    map_server
+      发布topic：
+        /map  (nav_msgs/OccupancyGrid)       具体信息
+        /map_metadata (nav_msgs/MapMetaData) 地图描述信息（长，宽，分辨率）
+      提供service
+        /static_map  (nav_msgs/GetMap)
+      设置param
+        ~frame_id(string, default:"map")
+        
+      使用时需要提供
+        1.my_map.pgm 地图
+        2.my_map.yaml  地图信息
+      命令
+      启动，发布地图
+        rosrun map_server map_server my_map.yaml
+      保存地图
+        rosrun map_server map_saver [-f my_map]
+      
+AMCL
+  输入：
+    /tf:
+      base_frame和odom_frame之间
+    /scan
+    /map
+  输出：
+  
+      
+    
+    
