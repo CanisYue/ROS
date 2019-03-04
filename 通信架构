@@ -1,0 +1,66 @@
+Master和Node
+  机器人启动package为bringup
+  rosrun命令运行一个node
+  roslaunch 启动整个package
+  rosnode list
+  rosnode [] info
+  
+  
+  
+  
+Topic和Msg（异步传输）
+  topic可以有多个subscribers，多个publishers
+  Message
+    topic内容的数据类型，/pkg/msg/*.msg文件
+  相关命令
+    rostopic list
+    rostopic info/topic_name
+    rostopic echo
+  topic都以/开头
+  
+  
+Service（同步传输）
+  srv
+    service通信的数据格式
+  需要修改package.xml（添加依赖）
+  修改CMakeList.txt
+  相关命令
+  rosservice
+    rosservice list
+    rosservice info service_name
+    rosservice call service_name args
+  rossrv
+    rossrv list
+    rossrv show srv_name
+
+
+Parameter Server
+运行roscore时启动，存储各种参数的字典，存储不常改变的参数，可以从命令行，.launch中修改
+  相关命令
+  rosparam
+  rosparam list
+  rosparam get param_key
+  rosparam set param_key param_value
+  rosparam dump file_name 保存参数到文件
+  rosparam load file_name 从文件读取参数
+  rosparam delete param_key
+  
+  .launch 文件
+    修改<param> <rosparam>标签
+ 
+ Action
+ client和server之间的通信，需要feedback，中间可能取消
+ client传给server有goal,cancel，server传给client有status，result，feedback。用于长时间，可抢占任务
+ 对应文件：action文件（*.action)
+  文件形式
+  #Define the goal (client)
+  
+  ---
+  #Define the result(sever，只传一次）
+  ---
+  #Define a feedback message(Sever,可传多次）
+  
+  
+  
+  
+    
