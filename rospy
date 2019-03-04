@@ -1,0 +1,50 @@
+函数
+Node, Topic, Service, Param, Time
+
+Node相关
+  init_node(name) #注册和初始化
+  MasterProxy get_master() 获取句柄
+  
+Topic相关
+  get_published_topics() 返回正在被发布的所有topic名称和类型
+  Message wait_for_message(topic, topic_type, time_out=None) 等待指定topic的一个message
+  spin()
+  
+  Publisher类：
+  _init_(self, name, data_class, queue_size=None) #构造函数
+  publish(self, msg) 发布消息
+  unregister(self) 停止发布
+  
+  Subscriber类：
+  _init_(self, name, data_class, call_back=None, queue_size=None)构造函数
+  unregister(self) 停止订阅
+  
+Service相关
+  Service类：
+  _init_(self, name, service_class, handler)，handler是处理函数，传入请求，返回结果
+  shutdown(self) 关闭服务
+  
+  ServiceProxy类(Client相关）：
+  _init_(self, name, service_class) 构造函数
+  Response call(self, *args, **kwds) 调用服务
+  
+  Response _call_(self, *args, **kwds)调用服务
+  
+Param相关
+  
+Time相关
+  Time类（时刻）：
+    _init_(self, secs=0, nsecs=0)构造函数
+    Time now() 静态方法，当前舒克
+  Duration类：
+    _init_(self, secs=0, nsecs=0)构造函数 秒和纳秒
+    
+  函数：
+    Time get_rostime() 
+    float get_time()
+    sleep(duration)挂起
+  
+  Rate类：
+    _init_(self, frequency)构造函数
+    sleep(self) 挂起，考虑上一次rate.sleep()时间
+    Time remaining(self) 剩余sleep时间
