@@ -5,8 +5,8 @@ Client Library提供ROS编程的接口和库
   ros::NodeHandle Class 创建句柄
   使用
   创建subscriber
-    ros::NodeHandle ng;
-    ros::Publisher pwb = nb.advertise(topic, queue_size)
+    ros::NodeHandle nh;
+    ros::Publisher pwb = nh.advertise(topic, queue_size)
     pwb.publish(msg);
   创建subscriber
     ros::Subscriber subcribe(topic, queue_size, 回调函数指针)
