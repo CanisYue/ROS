@@ -1,5 +1,9 @@
-Navigation Stack
-move_base
+Navigation Stack路径规划导航包
+move_base 负责整体导航规划
+  提供：
+    里程计、传感器tf、map
+  输出：
+    command，控制底盘运动
   功能：
     全局规划、局部规划（动态避障）、处理异常行为
   三个接口：
@@ -31,7 +35,7 @@ move_base
       保存地图
         rosrun map_server map_saver [-f my_map]
       
-AMCL
+AMCL 定位作用
   输入：
     /tf:
       base_frame和odom_frame之间
