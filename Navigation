@@ -1,11 +1,13 @@
 Navigation Stack路径规划导航包
+核心节点：
 move_base 负责整体导航规划
   提供：
     里程计、传感器tf、map
   输出：
-    command，控制底盘运动
+    cmd_vel，控制底盘运动
   功能：
     全局规划、局部规划（动态避障）、处理异常行为
+  来自navcore
   三个接口：
     Base Local Planner:
     
@@ -13,8 +15,8 @@ move_base 负责整体导航规划
     
     Recovery Behavior：
   
-  costmap：插件，维护代价地图
-    两张（global， local）、多层（static layer， obstacle layer（动态，支持3D点云投影）， inflation layer（膨胀））
+  costmap：插件，维护代价地图（栅格地图）
+    两张（global， local）、多层（static layer（静态地图）， obstacle layer（传感器扫描地图，动态，支持3D点云投影）， inflation layer（膨胀））
     
   MapServer：提供地图 + AMCL（定位）
     map_server
