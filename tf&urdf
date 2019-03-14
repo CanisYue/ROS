@@ -6,10 +6,12 @@ TransForm
   
 broadcaster发布数据格式： TransformStamped.msg
 
-tf树的数据结构
+消息（单个）：
+TransformStamped.msg
+
+tf树的数据结构(很多个TransformStamped.msg组成）
   tf/tfMessage.msg (第一代)
   tf2_msgs/TFMessage.msg （第二代,简化升级版本）
-  
   
 tf in C++
   带时间戳的变换
