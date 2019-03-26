@@ -1,0 +1,53 @@
+publish
+  /local_plan
+  
+原理：
+  1.discretely sample from the robot's control space
+  2.for each sampled velocity, perform forward simulations
+  3.evaluate
+  4.pick the highest-scoring trajectory and send it to the mobile base
+  5.repeat
+  
+  
+Parameters
+  /yaw_goal_tolerance() 越小，容错率越小（会使得机器人疯狂调整）
+  XY tolerance 
+  sim_time 调整local plan长度：模拟时间越长，plan越长
+  
+Local Costmap
+  定义：created directly from the sensor
+  两个layer：
+    inflation layer：和global planner 一样
+    obstacles_layer： 单独的
+    修改在common costmap parameter文件
+      Parameter
+        obstacle range:
+          显示多少半径内的障碍物
+        inflation rate：
+          膨胀系数
+          
+          
+ Recovery Behaviors：
+    Rotate Recovery：
+      Parameter是：
+    
+    Clear Costmap：
+
+rviz：
+  footprint
+  
+  current goal
+    
+    
+    
+    
+  展示代价地图：rosservice call /move_base/clear_costmaps "{}"
+  
+  
+
+
+
+teb:
+  implements the Timed Elastic Band method in orer to calculate the local plan to follow
+  
+  
