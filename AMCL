@@ -1,0 +1,32 @@
+1.打开AMCL particles
+2.particles太高降低更新频率
+3.updata_min_d/update_min_a/更新drift频率太低采样太少，不准确
+4.initial_pose 
+5.rviz
+	laserScan display
+		调整topic
+	Map display
+	“Pose array” display
+	
+	2D Pose Estimate Tool设置初始位置
+
+检验
+写一个service返回pose
+查看协方差
+	rostopic echo /amcl_pose
+	
+	
+6.初始化起始位置 
+	rosparam list | grep amcl
+	rosparam get /amcl/initial_pose_x
+	或者
+		修改fixed frame
+		使用2d pose estimate
+	
+7.全局定位
+	rosservice call /…/global_localization
+8.动态调整
+	roslaunch …movebase
+	roslaunch rviz rviz
+	rosrun rqt_reconfigure rqt_reconfigure
+	
