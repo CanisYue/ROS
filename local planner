@@ -50,4 +50,35 @@ rviz：
 teb:
   implements the Timed Elastic Band method in orer to calculate the local plan to follow
   
+
+调参：
+   显示中间数据 
+    rosparam set /test_optim_node/publish_feedback true # or use rqt_reconfigure later
+    roslaunch teb_local_planner test_optim_node.launch
+    rosrun teb_local_planner_tutorials visualize_velocity_profile.py # or call your own script here
+    
+   1.调整优化权重（障碍物的权重）
+    调整优化权重（单个成本的缩放，这里是参数weight_obstacle）。 但是如果你选择了太高的值，优化问题会变得病态，导致不良的收敛行为。
+    通过添加“额外边距”来移动参数。 通过向min_obstacle_dist参数添加一个小的额外边距，您可以隐含地将成本值增加到0.2米。
+    您可以使用单个参数penalty_epsilon立即移动所有惩罚项，但要小心，因为这样做会严重影响优化结果。
+    
+   2.使用via point进行优化（全局必经点）
+      将参数global_plan_viapoint_sep的值设置为正值（例如1.0）。
+      点击publish point，调整weight_viapoint
+      参数global_plan_via_point_sep的实际值定义了沿全局计划的两个连续通过点之间的最小间隔（以米为单位）。
+      例如。 通过将值设置为0.5，每0.5米从全局计划中选择一个新的通过点（只要全局计划的分辨率足够）。
+      因此，通过调整值，您可以指定是否应将粗略或精细参考路径考虑在路径跟踪中。
+      现在在rviz中设置不同的导航目标，并使用global_plan_via_point_sep和weight_viapoint的不同值进行播放。
+  
+      
+      
+   3.优化机器人模型（base-footprint）
+   4.阿克曼模型
+      最小转弯半径由ros参数〜/min_turning_radius设置（参见Node-Api）。
+      您可以将值设置得稍大，因为在优化（惩罚）中使用软约束执行边界。
+      请注意，必须关闭或替换导航包提供的backup/escape行为，因为它们不支持类似汽车的机器人。
+
+  
+ 
+  
   
