@@ -1,0 +1,4 @@
+创建工作空间、src
+安装必要依赖
+rosdep install --from-paths src --ignore-src --rosdistro=kinetic -y
+在工作空间catkin_make
